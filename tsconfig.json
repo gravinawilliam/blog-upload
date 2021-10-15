@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": ["es6"],
+    "allowJs": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "removeComments": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types",
+      "./src/custom_typings"
+    ],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@application/*":["./src/application/*"],
+      "@dtos/*":["./src/domain/dtos/*"],
+      "@models/*":["./src/domain/models/*"],
+      "@domain/*":["./src/domain/*"],
+      "@shared/*":["./src/shared/*"],
+      "@fakes/*":["./src/fakes/*"],
+      "@infra/*":["./src/infra/*"],
+      "@main/*":["./src/main/*"]
+    },
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "pretty": true,
+    "strictPropertyInitialization": false,
+    "types": ["node", "jest"]
+  },
+  "include":[
+    "src/**/*"
+  ]
+}
