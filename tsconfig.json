@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es6",
     "module": "commonjs",
     "lib": ["es6"],
     "allowJs": true,
@@ -19,14 +19,9 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@application/*":["./src/application/*"],
-      "@dtos/*":["./src/domain/dtos/*"],
-      "@models/*":["./src/domain/models/*"],
-      "@domain/*":["./src/domain/*"],
-      "@shared/*":["./src/shared/*"],
-      "@fakes/*":["./src/fakes/*"],
-      "@infra/*":["./src/infra/*"],
-      "@main/*":["./src/main/*"]
+      "@modules/*":["./src/modules/*"],
+      "@config/*":["./src/config/*"],
+      "@shared/*":["./src/shared/*"]
     },
     "resolveJsonModule": true,
     "sourceMap": true,

@@ -1,59 +1,38 @@
-version: '3'
+version: '3.3'
 
 services:
-  # db-pg-blog-user:
-  #   image: 'bitnami/postgresql:latest'
-  #   environment:
-  #     POSTGRESQL_PASSWORD: ${DB_DEFAULT_PASSWORD}
-  #     POSTGRESQL_USERNAME: ${DB_DEFAULT_USERNAME}
-  #     POSTGRESQL_DATABASE: ${DB_DEFAULT_DATABASE}
-  #     POSTGRESQL_TIMEZONE: America/SAO_PAULO
-  #   ports:
-  #     - "${DB_DEFAULT_PORT}:${DB_DEFAULT_PORT}"
-  #   restart: unless-stopped
-  #   container_name: db-pg-blog-user
-  #   networks:
-  #     - kong-net
-  #   volumes:
-  #     - ./pgdata:/var/lib/postgresql/data
-
-  sonarqube:
-    container_name: sonarqube
-    image:  sonarqube:latest
-    ports:
-      -  "9000:9000"
-      -  "9092:9092"
-
-  blog-user:
+  blog-upload:
     build:
       context: .
       dockerfile: ./Dockerfile
-    image: blog-user:latest
+    image: blog-upload:latest
     environment:
-      DB_DEFAULT_PASSWORD: ${DB_DEFAULT_PASSWORD}
-      DB_DEFAULT_USERNAME: ${DB_DEFAULT_USERNAME}
-      DB_DEFAULT_DATABASE: ${DB_DEFAULT_DATABASE}
-      DB_DEFAULT_TYPE: ${DB_DEFAULT_TYPE}
-      DB_DEFAULT_HOST: ${DB_DEFAULT_HOST}
-      DB_DEFAULT_PORT: ${DB_DEFAULT_PORT}
-      API_PORT: ${API_PORT}
       NODE_ENV: ${NODE_ENV}
-      SENTRY_DSN: ${SENTRY_DSN}
+      API_PORT: ${API_PORT}
+      DB_DEFAULT_HOST: ${DB_DEFAULT_HOST}
+      DB_DEFAULT_TYPE: ${DB_DEFAULT_TYPE}
+      DB_DEFAULT_PORT: ${DB_DEFAULT_PORT}
+      DB_DEFAULT_USERNAME: ${DB_DEFAULT_USERNAME}
+      DB_DEFAULT_PASSWORD: ${DB_DEFAULT_PASSWORD}
+      DB_DEFAULT_DB_NAME: ${DB_DEFAULT_DB_NAME}
+      JWT_APP_SECRET: ${JWT_APP_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN}
+      JWT_ALGORITHM: ${JWT_ALGORITHM}
+      JWT_ISSUER: ${JWT_ISSUER}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_S3_BUCKET_CONTENT: ${AWS_S3_BUCKET_CONTENT}
+      AWS_S3_BUCKET_THUMBNAIL: ${AWS_S3_BUCKET_THUMBNAIL}
+      AWS_S3_BUCKET_AVATAR: ${AWS_S3_BUCKET_AVATAR}
+      URL_BASE_DATA_REPLICATION: ${URL_BASE_DATA_REPLICATION}
+      URL_BASE_NOTIFICATIONS: ${URL_BASE_NOTIFICATIONS}
     ports:
       - "${API_PORT}:${API_PORT}"
-    container_name: blog-user
-    # depends_on:
-    #   - db-pg-blog-user
+    container_name: blog-upload
     networks:
-      - kong-net
-    volumes:
-      - .:/app
-      - /app/node_modules
-
-# volumes:
-#   pgdata:
+      - blog-net
 
 
 networks:
-  kong-net:
+  blog-net:
     external: true

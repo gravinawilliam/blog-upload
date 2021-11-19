@@ -1,5 +1,4 @@
-# Image source
-FROM node:14-alpine
+FROM node:14.15.4-alpine3.12
 
 RUN apk add --no-cache bash
 
@@ -16,4 +15,4 @@ RUN npm install
 COPY . /app/
 
 EXPOSE 3000
-CMD ["npm", "run", "start:dev"]
+CMD ["npm", "run", "dev:server"]
