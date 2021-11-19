@@ -26,7 +26,7 @@ Sentry.init({
 
 app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
-app.use(cors({}));
+app.use(cors({ origin: '*' }));
 
 app.use(express.json());
 app.use(routes);
