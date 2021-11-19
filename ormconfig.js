@@ -1,5 +1,6 @@
 
 const  { SnakeNamingStrategy } = require('typeorm-naming-strategies');
+require('dotenv').config();
 
 const devConfig = [
   {
