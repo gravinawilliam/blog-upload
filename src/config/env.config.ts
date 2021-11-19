@@ -9,6 +9,11 @@ const envConfig = {
     },
   },
   dataReplication: { key: process.env.DATA_REPLICATION_KEY },
+  external: {
+    sentry: {
+      dsn: process.env.SENTRY_DSN,
+    },
+  },
 };
 
 export default envConfig;
