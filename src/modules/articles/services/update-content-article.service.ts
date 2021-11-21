@@ -52,6 +52,7 @@ export default class UpdateContentArticleService {
 
     this.dataReplications.article({
       ...article,
+      thumbnail: undefined,
       status:
         article.content !== null && article.thumbnail !== null
           ? 'reviewer-approval-pending'
